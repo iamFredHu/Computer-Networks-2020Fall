@@ -45,11 +45,11 @@ arp_buf_t arp_buf;
 void arp_update(uint8_t *ip, uint8_t *mac, arp_state_t state)
 {
     // TODO
-    time_t nowTime = time(NULL);
+    time_t nowTime = time(&nowTime);
     for (int i = 0; i < ARP_MAX_ENTRY; i++)
     {
         /* 首先需要依次轮询检测ARP表中所有的ARP表项是否有超时 */
-        if (arp_table[i].timeout <= nowTime)
+        if ((nowTime - arp_table[i].timeout) > ARP_TIMEOUT_SEC)
             arp_table[i].state = ARP_INVALID; //如果有超时，则将该表项的状态改为无效
     }
     /*接着，查看ARP表是否有无效的表项，如果有，则将arp_update()函数传递进来的新的IP、MAC信息插入到表中，
@@ -200,7 +200,7 @@ void arp_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol)
         memcpy(&arp_buf.ip, ip, NET_IP_LEN);
         arp_buf.protocol = protocol;
         arp_buf.valid = 1;
-        }
+    }
 }
 
 /**
