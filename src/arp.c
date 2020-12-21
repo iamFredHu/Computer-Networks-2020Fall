@@ -65,6 +65,7 @@ void arp_update(uint8_t *ip, uint8_t *mac, arp_state_t state)
             //记录超时时间
             arp_table[i].timeout = nowTime + ARP_TIMEOUT_SEC;
             arp_table[i].state = state;
+            return;
         }
     }
     /* 如果ARP表中没有无效的表项，则找到超时时间最长的一条表项，
@@ -113,7 +114,7 @@ static void arp_req(uint8_t *target_ip)
     buf_init(&txbuf, sizeof(arp_pkt_t));
 
     //ARP报头
-    arp_pkt_t *arp = (arp_pkt_t *)(&txbuf)->data;
+    arp_pkt_t *arp = (arp_pkt_t *)(txbuf.data);
     *arp = arp_init_pkt;
     memcpy(arp->target_ip, target_ip, NET_IP_LEN);
     arp->opcode = swap16(ARP_REQUEST);
@@ -145,14 +146,12 @@ void arp_in(buf_t *buf)
     int opcode = swap16(arp->opcode);
     if (arp->hw_type != swap16(ARP_HW_ETHER) || arp->pro_type != swap16(NET_PROTOCOL_IP) || arp->hw_len != NET_MAC_LEN || arp->pro_len != NET_IP_LEN || (opcode != ARP_REQUEST && opcode != ARP_REPLY))
         return;
-    /* 更新arp表 */
     arp_update(arp->sender_ip, arp->sender_mac, ARP_VALID);
-
-    if (arp_buf.valid)
+    if (arp_buf.valid == 1)
     {
         for (int i = 0; i < ARP_MAX_ENTRY; i++)
         {
-            if (arp_table[i].state == ARP_VALID)
+            if (arp_table[i].state == ARP_VALID && memcmp(arp_table[i].ip, arp_buf.ip, NET_IP_LEN) == 0)
             {
                 arp_buf.valid = 0;
                 ethernet_out(&arp_buf.buf, arp_table[i].mac, arp_buf.protocol);
@@ -162,15 +161,15 @@ void arp_in(buf_t *buf)
     }
     else
     {
-        if (opcode == ARP_REQUEST)
+        if (opcode == ARP_REQUEST && memcmp(arp->target_ip, net_if_ip, NET_IP_LEN) == 0)
         {
             buf_init(&txbuf, sizeof(arp_pkt_t));
-            arp_pkt_t *tempArp = (arp_pkt_t *)txbuf.data;
-            *tempArp = arp_init_pkt;
-            tempArp->opcode = swap16(ARP_REPLY);
-            memcpy(tempArp->target_ip, arp->sender_ip, NET_IP_LEN);
-            memcpy(tempArp->target_mac, arp->sender_mac, NET_MAC_LEN);
-            ethernet_out(&txbuf, tempArp->target_mac, NET_PROTOCOL_ARP);
+            arp_pkt_t *arp_in_send = (arp_pkt_t *)txbuf.data;
+            *arp_in_send = arp_init_pkt;
+            arp_in_send->opcode = swap16(ARP_REPLY);
+            memcpy(arp_in_send->target_ip, arp->sender_ip, NET_IP_LEN);
+            memcpy(arp_in_send->target_mac, arp->sender_mac, NET_MAC_LEN);
+            ethernet_out(&txbuf, arp_in_send->target_mac, NET_PROTOCOL_ARP);
         }
     }
 }
@@ -190,7 +189,7 @@ void arp_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol)
 {
     // TODO
     uint8_t *tempMac = arp_lookup(ip);
-    if (tempMac != NULL)
+    if (tempMac)
     {
         ethernet_out(buf, tempMac, protocol);
     }
@@ -198,10 +197,10 @@ void arp_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol)
     {
         arp_req(ip);
         arp_buf.buf = *buf;
-        memcpy(arp_buf.ip, ip, NET_IP_LEN);
+        memcpy(&arp_buf.ip, ip, NET_IP_LEN);
         arp_buf.protocol = protocol;
         arp_buf.valid = 1;
-    }
+        }
 }
 
 /**
