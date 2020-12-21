@@ -12,11 +12,11 @@
 static const arp_pkt_t arp_init_pkt = {
     .hw_type = swap16(ARP_HW_ETHER),
     .pro_type = swap16(NET_PROTOCOL_IP),
-    .hw_len = NET_MAC_LEN,
-    .pro_len = NET_IP_LEN,
-    .sender_ip = DRIVER_IF_IP,
-    .sender_mac = DRIVER_IF_MAC,
-    .target_mac = {0}};
+    .hw_len = NET_MAC_LEN,       //硬件地址长
+    .pro_len = NET_IP_LEN,       //协议地址长
+    .sender_ip = DRIVER_IF_IP,   //发送方IP地址
+    .sender_mac = DRIVER_IF_MAC, //发送方MAC地址
+    .target_mac = {0}};          //接收方MAC地址
 
 /**
  * @brief arp地址转换表
@@ -45,7 +45,44 @@ arp_buf_t arp_buf;
 void arp_update(uint8_t *ip, uint8_t *mac, arp_state_t state)
 {
     // TODO
-
+    time_t nowTime = time(NULL);
+    for (int i = 0; i < ARP_MAX_ENTRY; i++)
+    {
+        /* 首先需要依次轮询检测ARP表中所有的ARP表项是否有超时 */
+        if (arp_table[i].timeout <= nowTime)
+            arp_table[i].state = ARP_INVALID; //如果有超时，则将该表项的状态改为无效
+    }
+    /*接着，查看ARP表是否有无效的表项，如果有，则将arp_update()函数传递进来的新的IP、MAC信息插入到表中，
+     * 并记录超时时间，更改表项的状态为有效。
+     */
+    for (int i = 0; i < ARP_MAX_ENTRY; i++)
+    {
+        if (arp_table[i].state == ARP_INVALID)
+        {
+            //插入表格
+            memcpy(arp_table[i].ip, ip, NET_IP_LEN);
+            memcpy(arp_table[i].mac, mac, NET_MAC_LEN);
+            //记录超时时间
+            arp_table[i].timeout = nowTime + ARP_TIMEOUT_SEC;
+            arp_table[i].state = state;
+        }
+    }
+    /* 如果ARP表中没有无效的表项，则找到超时时间最长的一条表项，
+     * 将arp_update()函数传递进来的新的IP、MAC信息替换该表项，并记录超时时间，设置表项的状态为有效。
+     */
+    int time_longest_index;
+    for (int i = 0; i < ARP_MAX_ENTRY; i++)
+    {
+        if (arp_table[i].timeout < nowTime)
+        {
+            nowTime = arp_table[i].timeout;
+            time_longest_index = i;
+        }
+    }
+    memcpy(arp_table[time_longest_index].ip, ip, NET_IP_LEN);
+    memcpy(arp_table[time_longest_index].mac, mac, NET_MAC_LEN);
+    arp_table[time_longest_index].timeout = nowTime + ARP_TIMEOUT_SEC;
+    arp_table[time_longest_index].state = state;
 }
 
 /**
@@ -73,7 +110,15 @@ static uint8_t *arp_lookup(uint8_t *ip)
 static void arp_req(uint8_t *target_ip)
 {
     // TODO
+    buf_init(&txbuf, sizeof(arp_pkt_t));
 
+    //ARP报头
+    arp_pkt_t *arp = (arp_pkt_t *)(&txbuf)->data;
+    *arp = arp_init_pkt;
+    memcpy(arp->target_ip, target_ip, NET_IP_LEN);
+    arp->opcode = swap16(ARP_REQUEST);
+    //将ARP数据报发送到ethernet层
+    ethernet_out(&txbuf, ethernet_out_mac, NET_PROTOCOL_ARP);
 }
 
 /**
@@ -96,7 +141,38 @@ static void arp_req(uint8_t *target_ip)
 void arp_in(buf_t *buf)
 {
     // TODO
-    
+    arp_pkt_t *arp = (arp_pkt_t *)buf->data;
+    int opcode = swap16(arp->opcode);
+    if (arp->hw_type != swap16(ARP_HW_ETHER) || arp->pro_type != swap16(NET_PROTOCOL_IP) || arp->hw_len != NET_MAC_LEN || arp->pro_len != NET_IP_LEN || (opcode != ARP_REQUEST && opcode != ARP_REPLY))
+        return;
+    /* 更新arp表 */
+    arp_update(arp->sender_ip, arp->sender_mac, ARP_VALID);
+
+    if (arp_buf.valid)
+    {
+        for (int i = 0; i < ARP_MAX_ENTRY; i++)
+        {
+            if (arp_table[i].state == ARP_VALID)
+            {
+                arp_buf.valid = 0;
+                ethernet_out(&arp_buf.buf, arp_table[i].mac, arp_buf.protocol);
+                return;
+            }
+        }
+    }
+    else
+    {
+        if (opcode == ARP_REQUEST)
+        {
+            buf_init(&txbuf, sizeof(arp_pkt_t));
+            arp_pkt_t *tempArp = (arp_pkt_t *)txbuf.data;
+            *tempArp = arp_init_pkt;
+            tempArp->opcode = swap16(ARP_REPLY);
+            memcpy(tempArp->target_ip, arp->sender_ip, NET_IP_LEN);
+            memcpy(tempArp->target_mac, arp->sender_mac, NET_MAC_LEN);
+            ethernet_out(&txbuf, tempArp->target_mac, NET_PROTOCOL_ARP);
+        }
+    }
 }
 
 /**
@@ -113,7 +189,19 @@ void arp_in(buf_t *buf)
 void arp_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol)
 {
     // TODO
-
+    uint8_t *tempMac = arp_lookup(ip);
+    if (tempMac != NULL)
+    {
+        ethernet_out(buf, tempMac, protocol);
+    }
+    else
+    {
+        arp_req(ip);
+        arp_buf.buf = *buf;
+        memcpy(arp_buf.ip, ip, NET_IP_LEN);
+        arp_buf.protocol = protocol;
+        arp_buf.valid = 1;
+    }
 }
 
 /**

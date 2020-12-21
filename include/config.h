@@ -11,6 +11,10 @@
         0x11, 0x22, 0x33, 0x44, 0x55, 0x66 \
     }                     //自定义网卡mac地址
 
+#define ETHERNET_OUT_MAC                          \
+    {                                       \
+        0xff,0xff,0xff,0xff,0xff,0xff       \
+    }
 
 #define ETHERNET_MTU 1500 //以太网最大传输单元
 
