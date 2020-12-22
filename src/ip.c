@@ -4,8 +4,6 @@
 #include "udp.h"
 #include <string.h>
 
-#define IP_MAX_SIZE ETHERNET_MTU - 20
-
 int ip_id = 0;
 
 /**
@@ -32,35 +30,41 @@ void ip_in(buf_t *buf)
     //报头检查：版本号、总长度、首部长度
     if ((ip_in_header->version != IP_VERSION_4) || ip_in_header->hdr_len * IP_HDR_LEN_PER_BYTE != 20 || ip_in_header->total_len > 65535)
         return;
-    //头部校验和
-    uint16_t checkNumber = ip_in_header->hdr_checksum;
-    uint16_t targetNumber = checksum16((uint16_t *)ip_in_header, 20);
+
+    //检查收到的数据包的目的IP地址是否为本机的IP地址，只处理目的IP为本机的数据报
+    uint8_t check_ip_dest = memcmp(ip_in_header->dest_ip, net_if_ip, NET_IP_LEN);
+
+    //需要先把头部校验和字段缓存起来
+    uint16_t temp_sum = ip_in_header->hdr_checksum;
+    //再将校验和字段清零
     ip_in_header->hdr_checksum = 0;
-    if (targetNumber != checkNumber)
+
+    //调用checksum16()函数计算头部检验和，比较计算的结果与之前缓存的校验和是否一致
+    uint16_t check_sum = checksum16((uint16_t *)buf->data, ip_in_header->hdr_len * IP_HDR_LEN_PER_BYTE);
+    ip_in_header->hdr_checksum = temp_sum;
+
+    if (check_sum != temp_sum)
     {
-        ip_in_header->hdr_checksum = checkNumber;
         return;
     }
-    ip_in_header->hdr_checksum = checkNumber;
-    if (memcmp(ip_in_header->dest_ip, net_if_ip, NET_IP_LEN) == 0)
+    else
     {
-        //检查IP报头的协议字段
-        if ((ip_in_header->protocol) == NET_PROTOCOL_ICMP)
+        if (!check_ip_dest)
         {
-            //如果是ICMP协议，则去掉IP头部，发送给ICMP协议层处理
-            buf_remove_header(buf, (ip_in_header->hdr_len) * IP_HDR_LEN_PER_BYTE);
-            icmp_in(buf, ip_in_header->src_ip);
-        }
-        else if ((ip_in_header->protocol) == NET_PROTOCOL_UDP)
-        {
-            //如果是UDP协议，则去掉IP头部，发送给UDP协议层处理
-            buf_remove_header(buf, (ip_in_header->hdr_len) * IP_HDR_LEN_PER_BYTE);
-            udp_in(buf, ip_in_header->src_ip);
-        }
-        else
-        {
-            //如果是本实验中不支持的其他协议，则需要调用icmp_unreachable()函数回送一个ICMP协议不可达的报文。
-            icmp_unreachable(buf, ip_in_header->src_ip, ICMP_CODE_PROTOCOL_UNREACH);
+            if (ip_in_header->protocol == NET_PROTOCOL_ICMP)
+            {
+                buf_remove_header(buf, 20);
+                icmp_in(buf, ip_in_header->src_ip);
+            }
+            else if (ip_in_header->protocol == NET_PROTOCOL_UDP)
+            {
+                buf_remove_header(buf, 20);
+                udp_in(buf, ip_in_header->src_ip);
+            }
+            else
+            {
+                icmp_unreachable(buf, ip_in_header->src_ip, ICMP_CODE_PROTOCOL_UNREACH);
+            }
         }
     }
 }
@@ -92,7 +96,7 @@ void ip_fragment_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol, int id, u
     ip_fragment_out_header->tos = 0;
     ip_fragment_out_header->id = swap16(id);
     ip_fragment_out_header->flags_fragment = swap16(offset | mf << 13);
-    ip_fragment_out_header->ttl = IP_DEFAULT_TTL;
+    ip_fragment_out_header->ttl = IP_DEFALUT_TTL;
     ip_fragment_out_header->protocol = protocol;
     ip_fragment_out_header->total_len = swap16(buf->len);
     ip_fragment_out_header->hdr_checksum = 0;
@@ -129,14 +133,23 @@ void ip_fragment_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol, int id, u
 void ip_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol)
 {
     uint16_t offset = 0;
-    buf_t ip_out_buf;
-    if (buf->len > IP_MAX_SIZE) //如果超过最大长度 分片发送
+    if (buf->len > ETHERNET_MTU - 20) //如果超过最大长度 分片发送
     {
-        buf_init(&ip_out_buf, IP_MAX_SIZE);
-        memcpy(ip_out_buf.data, buf->data, IP_MAX_SIZE);
-        ip_fragment_out(&ip_out_buf, ip, protocol, ip_id, offset, 1);
-        buf_remove_header(buf, IP_MAX_SIZE); //删除已发送内容
-        offset += IP_MAX_SIZE;
+        while (buf->len > ETHERNET_MTU - 20)
+        {
+            buf_init(&txbuf, ETHERNET_MTU - 20);
+            memcpy(txbuf.data, buf->data, ETHERNET_MTU - 20);
+            ip_fragment_out(&txbuf, ip, protocol, ip_id, offset, 1);
+            buf_remove_header(buf, ETHERNET_MTU - 20); //删除已发送内容
+            offset = offset + (ETHERNET_MTU - 20);
+            buf->len = buf->len - (ETHERNET_MTU - 20);
+        }
+        if (buf->len > 0)
+        {
+            buf_init(&txbuf, buf->len);
+            memcpy(txbuf.data, buf->data, buf->len);
+            ip_fragment_out(&txbuf, ip, protocol, ip_id, offset, 0);
+        }
     }
     else
     {

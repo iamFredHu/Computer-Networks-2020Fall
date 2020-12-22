@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdio.h>
 
+static uint8_t ethernet_out_mac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+
 /**
  * @brief 初始的arp包
  * 
