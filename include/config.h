@@ -18,7 +18,7 @@
 #define ARP_TIMEOUT_SEC 60 * 5 //arp表过期时间
 #define ARP_MIN_INTERVAL 1     //向相同地址发送arp请求的最小间隔
 
-#define IP_DEFALUT_TTL 64 //IP默认TTL
+#define IP_DEFAULT_TTL 64 //IP默认TTL
 
 #define UDP_MAX_HANDLER 16 //最多的UDP处理程序数
 

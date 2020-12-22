@@ -96,7 +96,7 @@ void ip_fragment_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol, int id, u
     ip_fragment_out_header->tos = 0;
     ip_fragment_out_header->id = swap16(id);
     ip_fragment_out_header->flags_fragment = swap16(offset | mf << 13);
-    ip_fragment_out_header->ttl = IP_DEFALUT_TTL;
+    ip_fragment_out_header->ttl = IP_DEFAULT_TTL;
     ip_fragment_out_header->protocol = protocol;
     ip_fragment_out_header->total_len = swap16(buf->len);
     ip_fragment_out_header->hdr_checksum = 0;
