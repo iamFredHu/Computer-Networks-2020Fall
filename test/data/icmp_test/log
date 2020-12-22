@@ -1,0 +1,127 @@
+driver opened
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+arp buf: 
+	valid: 0
+
+Round 01 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+arp buf: 
+	valid: 1
+	buf:45 00 00 46 00 00 00 00 40 11 b2 e4 c0 a8 a3 67 c0 a8 a3 0a ae 1b 00 35 00 32 79 68 96 da 01 00 00 01 00 00 00 00 00 01 03 77 77 77 05 62 61 69 64 75 03 63 6f 6d 00 00 01 00 01 00 00 29 02 00 00 00 00 00 00 00 
+	ip: 192.168.163.10
+	protocol: 0800
+
+Round 02 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+arp buf: 
+	valid: 0
+
+Round 03 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+arp buf: 
+	valid: 0
+
+Round 04 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+arp buf: 
+	valid: 0
+
+Round 05 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+arp buf: 
+	valid: 0
+
+Round 06 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+arp buf: 
+	valid: 0
+
+Round 07 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+arp buf: 
+	valid: 0
+
+Round 08 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+arp buf: 
+	valid: 0
+
+Round 09 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+valid  	160		192.168.163.110		01:12:23:34:45:56
+arp buf: 
+	valid: 0
+
+Round 10 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+valid  	160		192.168.163.110		01:12:23:34:45:56
+valid  	160		192.168.163.2		1a:94:f0:3c:49:aa
+arp buf: 
+	valid: 0
+
+Round 11 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+valid  	160		192.168.163.110		01:12:23:34:45:56
+valid  	160		192.168.163.2		1a:94:f0:3c:49:aa
+arp buf: 
+	valid: 0
+
+Round 12 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+valid  	160		192.168.163.110		01:12:23:34:45:56
+valid  	160		192.168.163.2		1a:94:f0:3c:49:aa
+arp buf: 
+	valid: 0
+
+Round 13 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+valid  	160		192.168.163.110		01:12:23:34:45:56
+valid  	160		192.168.163.2		1a:94:f0:3c:49:aa
+arp buf: 
+	valid: 0
+
+Round 14 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+valid  	160		192.168.163.110		01:12:23:34:45:56
+valid  	160		192.168.163.2		1a:94:f0:3c:49:aa
+arp buf: 
+	valid: 0
+
+Round 15 -----------------------------
+<====== arp table =======>
+state  	timeout/10^7	ip			mac
+valid  	160		192.168.163.10		21:32:43:54:65:06
+valid  	160		192.168.163.110		01:12:23:34:45:56
+valid  	160		192.168.163.2		1a:94:f0:3c:49:aa
+arp buf: 
+	valid: 0
+
+driver closed

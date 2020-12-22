@@ -1,9 +1,0 @@
-*
-!.gitignore
-!Makefile
-!faker/
-!*.c
-!data/
-!data/*
-!data/*/demo_*
-!data/*/in.*

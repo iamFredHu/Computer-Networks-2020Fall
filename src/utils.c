@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <net.h>
 #define IPTOSBUFFERS 12
 
 /**
@@ -77,11 +78,34 @@ void buf_copy(buf_t *dst, buf_t *src)
  *        3. 将上述的和取反，即得到校验和。  
  *        
  * @param buf 要计算的数据包
- * @param len 要计算的长度
+ * @param len 要计算的长度(我设定为字节长度)
  * @return uint16_t 校验和
  */
 uint16_t checksum16(uint16_t *buf, int len)
 {
     // TODO
-        
+    // 根据RFC 1071文档，传进来的数据包不需要转换大小端字节序，因为从第7位进位到第8位和第15位进位到第0位是等价的
+    // 所以就需要保证整个网络包传进这个函数的时候没有经过改动
+    // 对于IP头部校验，可以直接不清零校验和部分，直接计算checksum，若计算结果为ffff即取反后为0，则校验和没问题。
+    // 可参考(https://en.wikipedia.org/wiki/IPv4_header_checksum)的Verifying the IPv4 header checksum部分
+    // 以下代码根据RFC 1071文档中给出的C代码编写(https://tools.ietf.org/html/rfc1071#ref-1)
+
+    uint32_t sum = 0;
+
+    while (len > 1)
+    {
+        sum += *buf++;
+        len -= 2;
+    }
+
+    if (len > 0) //如果有剩余字节的话，加上去
+    {
+        sum += *(uint8_t *)buf;
+    }
+
+    while (sum >> 16) //将32bits的sum折叠成16bits
+    {
+        sum = (sum >> 16) + (sum & 0xffff);
+    }
+    return ~sum;
 }

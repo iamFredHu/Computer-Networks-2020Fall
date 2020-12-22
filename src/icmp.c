@@ -20,34 +20,6 @@
 void icmp_in(buf_t *buf, uint8_t *src_ip)
 {
     // TODO
-    if (sizeof(buf) < sizeof(icmp_hdr_t))
-    {
-        return;
-    }
-
-    icmp_hdr_t *icmp_header = (icmp_hdr_t *)buf->data;
-    uint16_t temp_number = icmp_header->checksum;
-    uint16_t check_number = checksum16((uint16_t *)icmp_header, buf->len);
-    icmp_header->checksum = 0;
-    if (temp_number != check_number)
-    {
-        return;
-    }
-    icmp_header->checksum = temp_number;
-    //接着，查看该报文的ICMP类型是否为回显请求
-    if (icmp_header->type == ICMP_TYPE_ECHO_REQUEST)
-    {
-        buf_init(&txbuf, buf->len);
-        memcpy(txbuf.data, buf->data, buf->len);
-        icmp_hdr_t *icmp_temp_header = (icmp_hdr_t *)(&txbuf)->data;
-        icmp_temp_header->type = ICMP_TYPE_ECHO_REPLY;
-        icmp_temp_header->code = 0;
-        icmp_temp_header->id = icmp_header->id;
-        icmp_temp_header->seq = icmp_header->seq;
-        icmp_temp_header->checksum = 0;
-        icmp_temp_header->checksum = checksum16((uint16_t *)icmp_header, txbuf.len);
-        ip_out(&txbuf, src_ip, NET_PROTOCOL_ICMP);
-    }
 }
 
 /**
@@ -64,16 +36,5 @@ void icmp_in(buf_t *buf, uint8_t *src_ip)
 void icmp_unreachable(buf_t *recv_buf, uint8_t *src_ip, icmp_code_t code)
 {
     // TODO
-    int total_len = sizeof(icmp_hdr_t) + sizeof(ip_hdr_t) + 8;
-    buf_init(&txbuf, total_len);
-    //设置ICMP报头
-    icmp_hdr_t *icmp_header = (icmp_hdr_t *)(&txbuf)->data;
-    icmp_header->type = ICMP_TYPE_UNREACH;
-    icmp_header->code = code;
-    icmp_header->id = 0;
-    icmp_header->seq = 0;
-    icmp_header->checksum = 0;
-    memcpy(txbuf.data + sizeof(icmp_hdr_t), recv_buf->data, sizeof(ip_hdr_t) + 8);
-    icmp_header->checksum = checksum16((uint16_t *)icmp_header, txbuf.len);
-    ip_out(&txbuf, src_ip, NET_PROTOCOL_ICMP);
+    
 }

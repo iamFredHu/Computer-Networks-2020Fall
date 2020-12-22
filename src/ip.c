@@ -4,6 +4,9 @@
 #include "udp.h"
 #include <string.h>
 
+#define IP_MAX_SIZE ETHERNET_MTU - 20
+
+int ip_id = 0;
 
 /**
  * @brief 处理一个收到的数据包
@@ -27,11 +30,11 @@ void ip_in(buf_t *buf)
     // TODO
     ip_hdr_t *ip_in_header = (ip_hdr_t *)buf->data;
     //报头检查：版本号、总长度、首部长度
-    if ((ip_in_header->version != IP_VERSION_4) || ip_in_header->hdr_len * IP_HDR_LEN_PER_BYTE != sizeof(ip_hdr_t) || ip_in_header->total_len > 65535)
+    if ((ip_in_header->version != IP_VERSION_4) || ip_in_header->hdr_len * IP_HDR_LEN_PER_BYTE != 20 || ip_in_header->total_len > 65535)
         return;
     //头部校验和
     uint16_t checkNumber = ip_in_header->hdr_checksum;
-    uint16_t targetNumber = checksum16((uint16_t *)ip_in_header, sizeof(ip_hdr_t));
+    uint16_t targetNumber = checksum16((uint16_t *)ip_in_header, 20);
     ip_in_header->hdr_checksum = 0;
     if (targetNumber != checkNumber)
     {
@@ -80,27 +83,28 @@ void ip_fragment_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol, int id, u
 {
     // TODO
     // 你需要调用buf_add_header增加IP数据报头部缓存空间。
-    buf_add_header(buf, sizeof(ip_hdr_t));
+    buf_add_header(buf, 20);
     // 填写IP数据报头部字段。
     ip_hdr_t *ip_fragment_out_header = (ip_hdr_t *)buf->data;
 
-    ip_fragment_out_header->version = IP_VERSION_4;
     ip_fragment_out_header->hdr_len = 5;
+    ip_fragment_out_header->version = IP_VERSION_4;
     ip_fragment_out_header->tos = 0;
     ip_fragment_out_header->id = swap16(id);
-    if(mf == 0){
-        ip_fragment_out_header->total_len = swap16(buf->len);                               //总长度
-    }
-    else{
-        ip_fragment_out_header->total_len = swap16(ETHERNET_MTU);                           //总长度  
-    }
+    ip_fragment_out_header->flags_fragment = swap16(offset | mf << 13);
     ip_fragment_out_header->ttl = IP_DEFAULT_TTL;
-    ip_fragment_out_header->flags_fragment = swap16(offset >> 3 | mf << 13);
+    ip_fragment_out_header->protocol = protocol;
+    ip_fragment_out_header->total_len = swap16(buf->len);
+    ip_fragment_out_header->hdr_checksum = 0;
 
     memcpy(ip_fragment_out_header->src_ip, net_if_ip, NET_IP_LEN);
     memcpy(ip_fragment_out_header->dest_ip, ip, NET_IP_LEN);
-    ip_fragment_out_header->hdr_checksum = 0;
-    ip_fragment_out_header->hdr_checksum = checksum16((uint16_t *)buf->data, ip_fragment_out_header->hdr_len * IP_HDR_LEN_PER_BYTE);
+
+    //将checksum字段填0，再调用checksum16()函数计算校验和，并将计算后的结果填写到checksum字段中
+    uint16_t temp_check_sum = checksum16((uint16_t *)ip_fragment_out_header, 20);
+    ip_fragment_out_header->hdr_checksum = temp_check_sum;
+
+    //将封装后的IP数据报发送到arp层
     arp_out(buf, ip, NET_PROTOCOL_IP);
 }
 
@@ -124,31 +128,21 @@ void ip_fragment_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol, int id, u
  */
 void ip_out(buf_t *buf, uint8_t *ip, net_protocol_t protocol)
 {
-    // TODO
-    int id = 0;
-    int eth_max_len = ETHERNET_MTU - sizeof(ip_hdr_t);
-    if (buf->len > eth_max_len)
+    uint16_t offset = 0;
+    buf_t ip_out_buf;
+    if (buf->len > IP_MAX_SIZE) //如果超过最大长度 分片发送
     {
-        buf_t tempBuf;
-        buf_init(&tempBuf, eth_max_len);
-        for (int i = 0; i < buf->len / eth_max_len; i++)
-        {
-            buf_init(&txbuf, eth_max_len);
-            memcpy(txbuf.data, buf->data + i * eth_max_len, eth_max_len);
-            if (i == buf->len / eth_max_len - 1 & !(buf->len % eth_max_len))
-                ip_fragment_out(&txbuf, ip, protocol, id, i * eth_max_len / IP_HDR_OFFSET_PER_BYTE, 0);
-            else
-                ip_fragment_out(&txbuf, ip, protocol, id, i * eth_max_len / IP_HDR_OFFSET_PER_BYTE, 1);
-        }
-        if (buf->len % eth_max_len)
-        {
-            buf_init(&txbuf, buf->len % eth_max_len);
-            memcpy(txbuf.data, buf->data + buf->len / eth_max_len * eth_max_len, buf->len % eth_max_len);
-            ip_fragment_out(&txbuf, ip, protocol, id, buf->len / eth_max_len * eth_max_len / IP_HDR_OFFSET_PER_BYTE, 0);
-        }
+        buf_init(&ip_out_buf, IP_MAX_SIZE);
+        memcpy(ip_out_buf.data, buf->data, IP_MAX_SIZE);
+        ip_fragment_out(&ip_out_buf, ip, protocol, ip_id, offset, 1);
+        buf_remove_header(buf, IP_MAX_SIZE); //删除已发送内容
+        offset += IP_MAX_SIZE;
     }
     else
     {
-        ip_fragment_out(buf, ip, protocol, id, 0, 0);
+        buf_init(&txbuf, buf->len);
+        memcpy(txbuf.data, buf->data, buf->len);
+        ip_fragment_out(&txbuf, ip, protocol, ip_id, offset, 0);
     }
+    ip_id = ip_id + 1;
 }
