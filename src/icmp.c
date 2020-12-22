@@ -37,17 +37,22 @@ void icmp_in(buf_t *buf, uint8_t *src_ip)
     {
         return;
     }
+
     if (icmp_in_header->type == ICMP_TYPE_ECHO_REQUEST)
     {
+        //首先调用buf_init()函数初始化txbuf，
         buf_init(&txbuf, buf->len);
+        //然后封装报头和数据，数据部分可以拷贝来自接收到的回显请求报文中的数据
+        memcpy(txbuf.data, buf->data, buf->len);
         icmp_hdr_t *icmp_package_header = (icmp_hdr_t *)txbuf.data;
         icmp_package_header->type = 0;
-        icmp_package_header->id = icmp_in_header->id;
         icmp_package_header->checksum = 0;
         icmp_package_header->code = 0;
+        icmp_package_header->id = icmp_in_header->id;
         icmp_package_header->seq = icmp_in_header->seq;
-        memcpy(txbuf.data + sizeof(icmp_hdr_t), buf->data + sizeof(icmp_hdr_t), buf->len - sizeof(icmp_hdr_t));
-        icmp_package_header->checksum = checksum16((uint16_t *)txbuf.data, txbuf.len);
+        icmp_package_header->checksum = checksum16((uint16_t *)icmp_package_header, txbuf.len);
+        
+        //最后将封装好的ICMP报文发送到IP层
         ip_out(&txbuf, src_ip, NET_PROTOCOL_ICMP);
     }
 }
