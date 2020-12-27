@@ -29,6 +29,9 @@ static udp_entry_t udp_table[UDP_MAX_HANDLER];
 static uint16_t udp_checksum(buf_t *buf, uint8_t *src_ip, uint8_t *dest_ip)
 {
     // TODO
+    // UDP伪校验和计算
+
+    //1.调用buf_add_header()添加UDP伪头部
     
 }
 

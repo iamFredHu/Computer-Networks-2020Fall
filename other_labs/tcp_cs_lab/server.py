@@ -2,7 +2,7 @@ from socket import *
 import sys
 
 server_socket = socket(AF_INET, SOCK_STREAM)
-address = ("", 7788)
+address = ("", 2233)
 server_socket.bind(address)
 server_socket.listen(128)
 
