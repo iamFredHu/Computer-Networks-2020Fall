@@ -1,16 +1,15 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define DRIVER_IF_NAME "eth0" //使用的物理网卡名称
-#define DRIVER_IF_IP      \
-    {                     \
-        192, 168, 163, 103 \
+#define DRIVER_IF_NAME "eno1" //使用的物理网卡名称
+#define DRIVER_IF_IP     \
+    {                    \
+        10, 251, 136, 76 \
     } //自定义网卡ip地址
 #define DRIVER_IF_MAC                      \
     {                                      \
-        0x11, 0x22, 0x33, 0x44, 0x55, 0x66 \
-    }                     //自定义网卡mac地址
-
+        0x1c, 0xa0, 0xb8, 0x80, 0x5a, 0x5d \
+    } //自定义网卡mac地址
 
 #define ETHERNET_MTU 1500 //以太网最大传输单元
 
