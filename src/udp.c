@@ -87,35 +87,41 @@ static uint16_t udp_checksum(buf_t *buf, uint8_t *src_ip, uint8_t *dest_ip)
 void udp_in(buf_t *buf, uint8_t *src_ip)
 {
     // TODO
-    // 首先需要检查UDP报头长度
+    // 首先需要检查UDP报文长度
     if (buf->len < sizeof(udp_hdr_t))
     {
         return;
     }
-
-    // 接着计算checksum
+    // 计算checksum
     // （1）先将UDP首部的checksum缓存起来
     udp_hdr_t *udp_in_hdr = (udp_hdr_t *)buf->data;
-    uint16_t temp_check_sum = udp_in_hdr->checksum;
-    // （2）再将UDP首部的的checksum字段清零
+    uint16_t temp_checksum = udp_in_hdr->checksum;
+    // （2）再将UDP首部的checksum字段清零
     udp_in_hdr->checksum = 0;
     // （3）调用udp_checksum()计算UDP校验和
     udp_in_hdr->checksum = udp_checksum(buf, src_ip, net_if_ip);
-    // （4）比较计算后的校验和与之前缓存的checksum进行比较，如不相等，则不处理该数据报。
-    if(udp_in_hdr->checksum != temp_check_sum)
+    // （4）比较计算后的校验和与之前缓存的checksum进行比较，如不相等，则不处理该数据报
+    if (udp_in_hdr->checksum != temp_checksum)
     {
         return;
     }
 
-    // 然后，根据该数据报目的端口号查找udp_table，查看是否有对应的处理函数（回调函数）
-
     // 如果没有找到，则调用buf_add_header()函数增加IP数据报头部(想一想，此处为什么要增加IP头部？？)
-
     // 然后调用icmp_unreachable()函数发送一个端口不可达的ICMP差错报文。
-
     // 如果能找到，则去掉UDP报头，调用处理函数（回调函数）来做相应处理。
-
-
+    for (int i = 0; i < UDP_MAX_HANDLER; i++)
+    {
+        if (udp_table[i].port == swap16(udp_in_hdr->dest_port) && udp_table[i].valid)
+        {
+            // 去掉UDP报头
+            buf_remove_header(buf, sizeof(udp_hdr_t));
+            // 调用处理函数（回调函数）来做相应处理
+            udp_table[i].handler(&udp_table[i], src_ip, udp_in_hdr->src_port, buf);
+            return;
+        }
+    }
+    buf_add_header(buf, sizeof(ip_hdr_t));
+    icmp_unreachable(buf, src_ip, ICMP_CODE_PORT_UNREACH);
 }
 
 /**
