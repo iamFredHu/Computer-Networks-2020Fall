@@ -60,15 +60,15 @@ include CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/test/ip_test.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/test/ip_test.c.o: ../test/ip_test.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ctest_ip.dir/test/ip_test.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/ip_test.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/ip_test.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/ip_test.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/ip_test.c
 
 CMakeFiles/ctest_ip.dir/test/ip_test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/test/ip_test.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/ip_test.c > CMakeFiles/ctest_ip.dir/test/ip_test.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/ip_test.c > CMakeFiles/ctest_ip.dir/test/ip_test.c.i
 
 CMakeFiles/ctest_ip.dir/test/ip_test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/test/ip_test.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/ip_test.c -o CMakeFiles/ctest_ip.dir/test/ip_test.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/ip_test.c -o CMakeFiles/ctest_ip.dir/test/ip_test.c.s
 
 CMakeFiles/ctest_ip.dir/test/ip_test.c.o.requires:
 
@@ -84,15 +84,15 @@ CMakeFiles/ctest_ip.dir/test/ip_test.c.o.provides.build: CMakeFiles/ctest_ip.dir
 CMakeFiles/ctest_ip.dir/src/ethernet.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/src/ethernet.c.o: ../src/ethernet.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ctest_ip.dir/src/ethernet.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/ethernet.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/ethernet.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c
 
 CMakeFiles/ctest_ip.dir/src/ethernet.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/src/ethernet.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c > CMakeFiles/ctest_ip.dir/src/ethernet.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c > CMakeFiles/ctest_ip.dir/src/ethernet.c.i
 
 CMakeFiles/ctest_ip.dir/src/ethernet.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/src/ethernet.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c -o CMakeFiles/ctest_ip.dir/src/ethernet.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c -o CMakeFiles/ctest_ip.dir/src/ethernet.c.s
 
 CMakeFiles/ctest_ip.dir/src/ethernet.c.o.requires:
 
@@ -108,15 +108,15 @@ CMakeFiles/ctest_ip.dir/src/ethernet.c.o.provides.build: CMakeFiles/ctest_ip.dir
 CMakeFiles/ctest_ip.dir/src/arp.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/src/arp.c.o: ../src/arp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ctest_ip.dir/src/arp.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/arp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/arp.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/arp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/arp.c
 
 CMakeFiles/ctest_ip.dir/src/arp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/src/arp.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/arp.c > CMakeFiles/ctest_ip.dir/src/arp.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/arp.c > CMakeFiles/ctest_ip.dir/src/arp.c.i
 
 CMakeFiles/ctest_ip.dir/src/arp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/src/arp.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/arp.c -o CMakeFiles/ctest_ip.dir/src/arp.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/arp.c -o CMakeFiles/ctest_ip.dir/src/arp.c.s
 
 CMakeFiles/ctest_ip.dir/src/arp.c.o.requires:
 
@@ -132,15 +132,15 @@ CMakeFiles/ctest_ip.dir/src/arp.c.o.provides.build: CMakeFiles/ctest_ip.dir/src/
 CMakeFiles/ctest_ip.dir/src/ip.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/src/ip.c.o: ../src/ip.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ctest_ip.dir/src/ip.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/ip.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ip.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/ip.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ip.c
 
 CMakeFiles/ctest_ip.dir/src/ip.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/src/ip.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ip.c > CMakeFiles/ctest_ip.dir/src/ip.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ip.c > CMakeFiles/ctest_ip.dir/src/ip.c.i
 
 CMakeFiles/ctest_ip.dir/src/ip.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/src/ip.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ip.c -o CMakeFiles/ctest_ip.dir/src/ip.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ip.c -o CMakeFiles/ctest_ip.dir/src/ip.c.s
 
 CMakeFiles/ctest_ip.dir/src/ip.c.o.requires:
 
@@ -156,15 +156,15 @@ CMakeFiles/ctest_ip.dir/src/ip.c.o.provides.build: CMakeFiles/ctest_ip.dir/src/i
 CMakeFiles/ctest_ip.dir/test/faker/icmp.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/test/faker/icmp.c.o: ../test/faker/icmp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ctest_ip.dir/test/faker/icmp.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/faker/icmp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/faker/icmp.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/faker/icmp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/faker/icmp.c
 
 CMakeFiles/ctest_ip.dir/test/faker/icmp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/test/faker/icmp.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/faker/icmp.c > CMakeFiles/ctest_ip.dir/test/faker/icmp.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/faker/icmp.c > CMakeFiles/ctest_ip.dir/test/faker/icmp.c.i
 
 CMakeFiles/ctest_ip.dir/test/faker/icmp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/test/faker/icmp.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/faker/icmp.c -o CMakeFiles/ctest_ip.dir/test/faker/icmp.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/faker/icmp.c -o CMakeFiles/ctest_ip.dir/test/faker/icmp.c.s
 
 CMakeFiles/ctest_ip.dir/test/faker/icmp.c.o.requires:
 
@@ -180,15 +180,15 @@ CMakeFiles/ctest_ip.dir/test/faker/icmp.c.o.provides.build: CMakeFiles/ctest_ip.
 CMakeFiles/ctest_ip.dir/test/faker/udp.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/test/faker/udp.c.o: ../test/faker/udp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ctest_ip.dir/test/faker/udp.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/faker/udp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/faker/udp.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/faker/udp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/faker/udp.c
 
 CMakeFiles/ctest_ip.dir/test/faker/udp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/test/faker/udp.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/faker/udp.c > CMakeFiles/ctest_ip.dir/test/faker/udp.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/faker/udp.c > CMakeFiles/ctest_ip.dir/test/faker/udp.c.i
 
 CMakeFiles/ctest_ip.dir/test/faker/udp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/test/faker/udp.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/faker/udp.c -o CMakeFiles/ctest_ip.dir/test/faker/udp.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/faker/udp.c -o CMakeFiles/ctest_ip.dir/test/faker/udp.c.s
 
 CMakeFiles/ctest_ip.dir/test/faker/udp.c.o.requires:
 
@@ -204,15 +204,15 @@ CMakeFiles/ctest_ip.dir/test/faker/udp.c.o.provides.build: CMakeFiles/ctest_ip.d
 CMakeFiles/ctest_ip.dir/test/faker/driver.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/test/faker/driver.c.o: ../test/faker/driver.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ctest_ip.dir/test/faker/driver.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/faker/driver.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/faker/driver.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/faker/driver.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/faker/driver.c
 
 CMakeFiles/ctest_ip.dir/test/faker/driver.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/test/faker/driver.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/faker/driver.c > CMakeFiles/ctest_ip.dir/test/faker/driver.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/faker/driver.c > CMakeFiles/ctest_ip.dir/test/faker/driver.c.i
 
 CMakeFiles/ctest_ip.dir/test/faker/driver.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/test/faker/driver.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/faker/driver.c -o CMakeFiles/ctest_ip.dir/test/faker/driver.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/faker/driver.c -o CMakeFiles/ctest_ip.dir/test/faker/driver.c.s
 
 CMakeFiles/ctest_ip.dir/test/faker/driver.c.o.requires:
 
@@ -228,15 +228,15 @@ CMakeFiles/ctest_ip.dir/test/faker/driver.c.o.provides.build: CMakeFiles/ctest_i
 CMakeFiles/ctest_ip.dir/test/global.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/test/global.c.o: ../test/global.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ctest_ip.dir/test/global.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/global.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/global.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/test/global.c.o   -c /home/lenovo/Computer-Networks-2020Fall/test/global.c
 
 CMakeFiles/ctest_ip.dir/test/global.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/test/global.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/global.c > CMakeFiles/ctest_ip.dir/test/global.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/test/global.c > CMakeFiles/ctest_ip.dir/test/global.c.i
 
 CMakeFiles/ctest_ip.dir/test/global.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/test/global.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/global.c -o CMakeFiles/ctest_ip.dir/test/global.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/test/global.c -o CMakeFiles/ctest_ip.dir/test/global.c.s
 
 CMakeFiles/ctest_ip.dir/test/global.c.o.requires:
 
@@ -252,15 +252,15 @@ CMakeFiles/ctest_ip.dir/test/global.c.o.provides.build: CMakeFiles/ctest_ip.dir/
 CMakeFiles/ctest_ip.dir/src/utils.c.o: CMakeFiles/ctest_ip.dir/flags.make
 CMakeFiles/ctest_ip.dir/src/utils.c.o: ../src/utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ctest_ip.dir/src/utils.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/utils.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/utils.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ctest_ip.dir/src/utils.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/utils.c
 
 CMakeFiles/ctest_ip.dir/src/utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ctest_ip.dir/src/utils.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/utils.c > CMakeFiles/ctest_ip.dir/src/utils.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/utils.c > CMakeFiles/ctest_ip.dir/src/utils.c.i
 
 CMakeFiles/ctest_ip.dir/src/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ctest_ip.dir/src/utils.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/utils.c -o CMakeFiles/ctest_ip.dir/src/utils.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/utils.c -o CMakeFiles/ctest_ip.dir/src/utils.c.s
 
 CMakeFiles/ctest_ip.dir/src/utils.c.o.requires:
 

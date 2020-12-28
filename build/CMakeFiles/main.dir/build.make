@@ -60,15 +60,15 @@ include CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/net.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/net.c.o: ../src/net.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/src/net.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/net.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/net.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/net.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/net.c
 
 CMakeFiles/main.dir/src/net.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/net.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/net.c > CMakeFiles/main.dir/src/net.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/net.c > CMakeFiles/main.dir/src/net.c.i
 
 CMakeFiles/main.dir/src/net.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/net.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/net.c -o CMakeFiles/main.dir/src/net.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/net.c -o CMakeFiles/main.dir/src/net.c.s
 
 CMakeFiles/main.dir/src/net.c.o.requires:
 
@@ -84,15 +84,15 @@ CMakeFiles/main.dir/src/net.c.o.provides.build: CMakeFiles/main.dir/src/net.c.o
 CMakeFiles/main.dir/src/ethernet.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/ethernet.c.o: ../src/ethernet.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/ethernet.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/ethernet.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/ethernet.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c
 
 CMakeFiles/main.dir/src/ethernet.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/ethernet.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c > CMakeFiles/main.dir/src/ethernet.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c > CMakeFiles/main.dir/src/ethernet.c.i
 
 CMakeFiles/main.dir/src/ethernet.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/ethernet.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c -o CMakeFiles/main.dir/src/ethernet.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ethernet.c -o CMakeFiles/main.dir/src/ethernet.c.s
 
 CMakeFiles/main.dir/src/ethernet.c.o.requires:
 
@@ -108,15 +108,15 @@ CMakeFiles/main.dir/src/ethernet.c.o.provides.build: CMakeFiles/main.dir/src/eth
 CMakeFiles/main.dir/src/utils.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/utils.c.o: ../src/utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/src/utils.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/utils.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/utils.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/utils.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/utils.c
 
 CMakeFiles/main.dir/src/utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/utils.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/utils.c > CMakeFiles/main.dir/src/utils.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/utils.c > CMakeFiles/main.dir/src/utils.c.i
 
 CMakeFiles/main.dir/src/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/utils.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/utils.c -o CMakeFiles/main.dir/src/utils.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/utils.c -o CMakeFiles/main.dir/src/utils.c.s
 
 CMakeFiles/main.dir/src/utils.c.o.requires:
 
@@ -132,15 +132,15 @@ CMakeFiles/main.dir/src/utils.c.o.provides.build: CMakeFiles/main.dir/src/utils.
 CMakeFiles/main.dir/src/main.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/main.c.o: ../src/main.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/src/main.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/main.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/main.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/main.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/main.c
 
 CMakeFiles/main.dir/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/main.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/main.c > CMakeFiles/main.dir/src/main.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/main.c > CMakeFiles/main.dir/src/main.c.i
 
 CMakeFiles/main.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/main.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/main.c -o CMakeFiles/main.dir/src/main.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/main.c -o CMakeFiles/main.dir/src/main.c.s
 
 CMakeFiles/main.dir/src/main.c.o.requires:
 
@@ -156,15 +156,15 @@ CMakeFiles/main.dir/src/main.c.o.provides.build: CMakeFiles/main.dir/src/main.c.
 CMakeFiles/main.dir/src/ip.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/ip.c.o: ../src/ip.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/src/ip.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/ip.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ip.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/ip.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/ip.c
 
 CMakeFiles/main.dir/src/ip.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/ip.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ip.c > CMakeFiles/main.dir/src/ip.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/ip.c > CMakeFiles/main.dir/src/ip.c.i
 
 CMakeFiles/main.dir/src/ip.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/ip.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ip.c -o CMakeFiles/main.dir/src/ip.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/ip.c -o CMakeFiles/main.dir/src/ip.c.s
 
 CMakeFiles/main.dir/src/ip.c.o.requires:
 
@@ -180,15 +180,15 @@ CMakeFiles/main.dir/src/ip.c.o.provides.build: CMakeFiles/main.dir/src/ip.c.o
 CMakeFiles/main.dir/src/icmp.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/icmp.c.o: ../src/icmp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/main.dir/src/icmp.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/icmp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/icmp.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/icmp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/icmp.c
 
 CMakeFiles/main.dir/src/icmp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/icmp.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/icmp.c > CMakeFiles/main.dir/src/icmp.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/icmp.c > CMakeFiles/main.dir/src/icmp.c.i
 
 CMakeFiles/main.dir/src/icmp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/icmp.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/icmp.c -o CMakeFiles/main.dir/src/icmp.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/icmp.c -o CMakeFiles/main.dir/src/icmp.c.s
 
 CMakeFiles/main.dir/src/icmp.c.o.requires:
 
@@ -204,15 +204,15 @@ CMakeFiles/main.dir/src/icmp.c.o.provides.build: CMakeFiles/main.dir/src/icmp.c.
 CMakeFiles/main.dir/src/udp.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/udp.c.o: ../src/udp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/main.dir/src/udp.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/udp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/udp.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/udp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/udp.c
 
 CMakeFiles/main.dir/src/udp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/udp.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/udp.c > CMakeFiles/main.dir/src/udp.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/udp.c > CMakeFiles/main.dir/src/udp.c.i
 
 CMakeFiles/main.dir/src/udp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/udp.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/udp.c -o CMakeFiles/main.dir/src/udp.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/udp.c -o CMakeFiles/main.dir/src/udp.c.s
 
 CMakeFiles/main.dir/src/udp.c.o.requires:
 
@@ -228,15 +228,15 @@ CMakeFiles/main.dir/src/udp.c.o.provides.build: CMakeFiles/main.dir/src/udp.c.o
 CMakeFiles/main.dir/src/driver.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/driver.c.o: ../src/driver.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/main.dir/src/driver.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/driver.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/driver.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/driver.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/driver.c
 
 CMakeFiles/main.dir/src/driver.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/driver.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/driver.c > CMakeFiles/main.dir/src/driver.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/driver.c > CMakeFiles/main.dir/src/driver.c.i
 
 CMakeFiles/main.dir/src/driver.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/driver.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/driver.c -o CMakeFiles/main.dir/src/driver.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/driver.c -o CMakeFiles/main.dir/src/driver.c.s
 
 CMakeFiles/main.dir/src/driver.c.o.requires:
 
@@ -252,15 +252,15 @@ CMakeFiles/main.dir/src/driver.c.o.provides.build: CMakeFiles/main.dir/src/drive
 CMakeFiles/main.dir/src/arp.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/arp.c.o: ../src/arp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lenovo/Computer-Networks-2020Fall/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/main.dir/src/arp.c.o"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/arp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/arp.c
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/src/arp.c.o   -c /home/lenovo/Computer-Networks-2020Fall/src/arp.c
 
 CMakeFiles/main.dir/src/arp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/arp.c.i"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/arp.c > CMakeFiles/main.dir/src/arp.c.i
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lenovo/Computer-Networks-2020Fall/src/arp.c > CMakeFiles/main.dir/src/arp.c.i
 
 CMakeFiles/main.dir/src/arp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/arp.c.s"
-	/usr/bin/gcc-8  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/arp.c -o CMakeFiles/main.dir/src/arp.c.s
+	/usr/bin/gcc-5  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lenovo/Computer-Networks-2020Fall/src/arp.c -o CMakeFiles/main.dir/src/arp.c.s
 
 CMakeFiles/main.dir/src/arp.c.o.requires:
 
